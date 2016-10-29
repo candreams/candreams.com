@@ -141,6 +141,87 @@
       <div class="body-wrap">
         
   
+    <article id="post-Hexo-backup-restore" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/10/29/Hexo-backup-restore/">Hexo 源码备份与恢复</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>###一、需求：</p>
+<p>很多情形都需要对Hexo进行管理和更新，或者进行重新部署环境。</p>
+<p>###二、思路</p>
+<p>创建分支，一个分支用来存放Hexo生成的网站原始的文件，另一个分支用来存放生成的静态网页。</p>
+<p>###三、搭建的流程</p>
+<p>1、在github上创建仓库，yourname.github.io;</p>
+<p>2、在本地创建yourname.github.io;</p>
+<p>3、在本地yourname.github.io文件夹下一次执行npm install hexo、hexo init、npm install 和 npm install hexo-deployer-git;</p>
+<p>4、在本地yourname.github.io文件夹下创建文件.gitignore, 这个文件是没有后缀的，打开后写入下面两个文件夹:</p>
+<p>/.deploy_git</p>
+<p>/node_modules</p>
+<p>deploy_git就是hexo d渲染并上传到github发布出去的，每次hexo d都会全部覆盖；</p>
+<p>/node_modules就是npm install生成的插件等，没必要上传，而且也上传不了。</p>
+<p>备注：</p>
+<p>刚开始好多备份的教程都没有说明.gitignore文件，在恢复之后，进行hexo d之后老是报错，发在邮箱里的错误内容<br>github给邮箱发送的内容，说：有模块没有初始化，在这里所指的就是.deploy_git这个模块</p>
+<ul>
+<li>git初始化:<br>git init</li>
+<li>创建hexo分支，用来存放源码:<br>git checkout -b hexo</li>
+<li>git 文件添加:<br>git add .</li>
+<li>git 提交:<br>git commit -m “init”</li>
+<li>添加远程仓库:<br>git remote add origin git@github.com:yourname/yourname.github.io.git</li>
+<li>push到hexo分支:<br>git push origin hexo</li>
+</ul>
+<p>5、修改_config.yml中的deploy参数，分支应为master;<br>6、依次执行git add .、git commit -m “…”、git push origin hexo提交网站相关的文件;<br>7、执行hexo g -d生成网站并部署到GitHub上<br>这样一来，在GitHub上的Git@github.com:yourname/yourname.github.io.git仓库就有两个分支，一个hexo分支用来存放网站的原始文件，一个master分支用来存放生成的静态网页。</p>
+<p>###四、恢复</p>
+<p>当重装电脑之后，或者想在其他电脑上修改博客，可以使用下列步骤：</p>
+<p>1、先安装hexo</p>
+<p>$ npm install -g hexo-cli</p>
+<p>2、存在github上的git clone下来 </p>
+<p>git clone git@github.com:yourname/yourname.github.io</p>
+<p>3、项目文件夹下npm </p>
+<p>cd 项目名/ </p>
+<p>$ npm install –no-bin-links </p>
+<p>$ npm install hexo-deployer-git</p>
+<p>4、重新配置github和coding的公钥</p>
+<p>###五、更新</p>
+<p>每次写作之后<br>先执行hexo d，把要发布的内容push到github上面了，再去弄备份</p>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2016/10/29/Hexo-backup-restore/" class="archive-article-date">
+  	<time datetime="2016-10-29T14:08:44.285Z" itemprop="datePublished"><i class="icon-clock"></i>2016-10-29</time>
+</a>
+      
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+
+  
     <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -615,56 +696,6 @@
       
       <a href="/2011/09/05/e6-88-90-e9-95-bf-e7-9a-84-e6-95-85-e4-ba-8b/" class="archive-article-date">
   	<time datetime="2011-09-05T14:29:00.000Z" itemprop="datePublished"><i class="icon-clock"></i>2011-09-05</time>
-</a>
-      
-      
-	<div class="article-category tagcloud">
-	<i class="icon-price-tags"></i>
-	<a class="article-category-link" href="/categories/爸妈手记/">爸妈手记</a>
-	</div>
-
-
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-e6-af-8d-e5-ad-90-e8-bf-91-e7-85-a7" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2011/05/28/e6-af-8d-e5-ad-90-e8-bf-91-e7-85-a7/">母子近照</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><img src="http://www.candreams.com/images/2011/08/muzijinzhao.jpg" alt=""></p>
-<div style="position: absolute; display: none; z-index: 9999;" id="livemargins_control"><img src="chrome://livemargins/skin/monitor-background-horizontal.png" alt="">    <img src="chrome://livemargins/skin/monitor-background-vertical.png" alt="">    <img src="chrome://livemargins/skin/monitor-play-button.png" alt=""></div>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      <a href="/2011/05/28/e6-af-8d-e5-ad-90-e8-bf-91-e7-85-a7/" class="archive-article-date">
-  	<time datetime="2011-05-28T05:34:00.000Z" itemprop="datePublished"><i class="icon-clock"></i>2011-05-28</time>
 </a>
       
       

@@ -6,14 +6,39 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://candreams.com">
-  <title>Archives | 璨儿的梦园</title>
+  <title>Hexo 源码备份与恢复 | 璨儿的梦园</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="璨儿的梦园">
-<meta property="og:url" content="http://candreams.com/archives/page/23/index.html">
+  <meta name="description" content="###一、需求：
+很多情形都需要对Hexo进行管理和更新，或者进行重新部署环境。
+###二、思路
+创建分支，一个分支用来存放Hexo生成的网站原始的文件，另一个分支用来存放生成的静态网页。
+###三、搭建的流程
+1、在github上创建仓库，yourname.github.io;
+2、在本地创建yourname.github.io;
+3、在本地yourname.github.io文件夹下一次执行n">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo 源码备份与恢复">
+<meta property="og:url" content="http://candreams.com/2016/10/29/Hexo-backup-restore/index.html">
 <meta property="og:site_name" content="璨儿的梦园">
+<meta property="og:description" content="###一、需求：
+很多情形都需要对Hexo进行管理和更新，或者进行重新部署环境。
+###二、思路
+创建分支，一个分支用来存放Hexo生成的网站原始的文件，另一个分支用来存放生成的静态网页。
+###三、搭建的流程
+1、在github上创建仓库，yourname.github.io;
+2、在本地创建yourname.github.io;
+3、在本地yourname.github.io文件夹下一次执行n">
+<meta property="og:updated_time" content="2016-10-29T14:08:44.334Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="璨儿的梦园">
+<meta name="twitter:title" content="Hexo 源码备份与恢复">
+<meta name="twitter:description" content="###一、需求：
+很多情形都需要对Hexo进行管理和更新，或者进行重新部署环境。
+###二、思路
+创建分支，一个分支用来存放Hexo生成的网站原始的文件，另一个分支用来存放生成的静态网页。
+###三、搭建的流程
+1、在github上创建仓库，yourname.github.io;
+2、在本地创建yourname.github.io;
+3、在本地yourname.github.io文件夹下一次执行n">
   
     <link rel="alternative" href="/atom.xml" title="璨儿的梦园" type="application/atom+xml">
   
@@ -139,260 +164,135 @@
 </nav>
 
       <div class="body-wrap">
+        <article id="post-Hexo-backup-restore" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
         
   
+    <h1 class="article-title" itemprop="name">
+      Hexo 源码备份与恢复
+    </h1>
   
+
+      </header>
     
-    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>###一、需求：</p>
+<p>很多情形都需要对Hexo进行管理和更新，或者进行重新部署环境。</p>
+<p>###二、思路</p>
+<p>创建分支，一个分支用来存放Hexo生成的网站原始的文件，另一个分支用来存放生成的静态网页。</p>
+<p>###三、搭建的流程</p>
+<p>1、在github上创建仓库，yourname.github.io;</p>
+<p>2、在本地创建yourname.github.io;</p>
+<p>3、在本地yourname.github.io文件夹下一次执行npm install hexo、hexo init、npm install 和 npm install hexo-deployer-git;</p>
+<p>4、在本地yourname.github.io文件夹下创建文件.gitignore, 这个文件是没有后缀的，打开后写入下面两个文件夹:</p>
+<p>/.deploy_git</p>
+<p>/node_modules</p>
+<p>deploy_git就是hexo d渲染并上传到github发布出去的，每次hexo d都会全部覆盖；</p>
+<p>/node_modules就是npm install生成的插件等，没必要上传，而且也上传不了。</p>
+<p>备注：</p>
+<p>刚开始好多备份的教程都没有说明.gitignore文件，在恢复之后，进行hexo d之后老是报错，发在邮箱里的错误内容<br>github给邮箱发送的内容，说：有模块没有初始化，在这里所指的就是.deploy_git这个模块</p>
+<ul>
+<li>git初始化:<br>git init</li>
+<li>创建hexo分支，用来存放源码:<br>git checkout -b hexo</li>
+<li>git 文件添加:<br>git add .</li>
+<li>git 提交:<br>git commit -m “init”</li>
+<li>添加远程仓库:<br>git remote add origin git@github.com:yourname/yourname.github.io.git</li>
+<li>push到hexo分支:<br>git push origin hexo</li>
+</ul>
+<p>5、修改_config.yml中的deploy参数，分支应为master;<br>6、依次执行git add .、git commit -m “…”、git push origin hexo提交网站相关的文件;<br>7、执行hexo g -d生成网站并部署到GitHub上<br>这样一来，在GitHub上的Git@github.com:yourname/yourname.github.io.git仓库就有两个分支，一个hexo分支用来存放网站的原始文件，一个master分支用来存放生成的静态网页。</p>
+<p>###四、恢复</p>
+<p>当重装电脑之后，或者想在其他电脑上修改博客，可以使用下列步骤：</p>
+<p>1、先安装hexo</p>
+<p>$ npm install -g hexo-cli</p>
+<p>2、存在github上的git clone下来 </p>
+<p>git clone git@github.com:yourname/yourname.github.io</p>
+<p>3、项目文件夹下npm </p>
+<p>cd 项目名/ </p>
+<p>$ npm install –no-bin-links </p>
+<p>$ npm install hexo-deployer-git</p>
+<p>4、重新配置github和coding的公钥</p>
+<p>###五、更新</p>
+<p>每次写作之后<br>先执行hexo d，把要发布的内容push到github上面了，再去弄备份</p>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2016/10/29/Hexo-backup-restore/" class="archive-article-date">
+  	<time datetime="2016-10-29T14:08:44.285Z" itemprop="datePublished"><i class="icon-clock"></i>2016-10-29</time>
+</a>
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2007" class="archive-year">2007</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2007/01/15/e6-97-a9-e7-9d-a1-e6-97-a9-e8-b5-b7-e8-ba-ab-e4-bd-93-e5-a5-bd/" class="archive-article-date">
-  	<time datetime="2007-01-15T01:10:00.000Z" itemprop="datePublished"><i class="icon-clock"></i>2007-01-15</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2007/01/15/e6-97-a9-e7-9d-a1-e6-97-a9-e8-b5-b7-e8-ba-ab-e4-bd-93-e5-a5-bd/">早睡早起身体好</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-	<i class="icon-price-tags"></i>
-	<a class="article-category-link" href="/categories/我的快乐童年/">我的快乐童年</a>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2007/01/14/e5-a4-aa-e9-98-b3-e5-85-ac-e5-85-ac-e5-81-b7-e6-87-92-e4-ba-86/" class="archive-article-date">
-  	<time datetime="2007-01-14T07:14:00.000Z" itemprop="datePublished"><i class="icon-clock"></i>2007-01-14</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2007/01/14/e5-a4-aa-e9-98-b3-e5-85-ac-e5-85-ac-e5-81-b7-e6-87-92-e4-ba-86/">太阳公公偷懒了</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-	<i class="icon-price-tags"></i>
-	<a class="article-category-link" href="/categories/我的快乐童年/">我的快乐童年</a>
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2016/10/29/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">你们好，GitHub和Hexo！</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+	    <a class="jiathis_button_twitter"></a>
+	    <a class="jiathis_button_plus"></a> 
+	    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
 	</div>
+	<script type="text/javascript" src="//v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2007/01/12/e7-94-9f-e6-b4-bb-e6-9d-82-e8-ae-b0/" class="archive-article-date">
-  	<time datetime="2007-01-12T03:27:00.000Z" itemprop="datePublished"><i class="icon-clock"></i>2007-01-12</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2007/01/12/e7-94-9f-e6-b4-bb-e6-9d-82-e8-ae-b0/">生活杂记</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-	<i class="icon-price-tags"></i>
-	<a class="article-category-link" href="/categories/我的快乐童年/">我的快乐童年</a>
-	</div>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2007/01/11/e6-9c-89-e5-9c-9f-e9-b8-a1-e8-9b-8b-e5-90-83-e7-9a-84-e5-b9-b8-e7-a6-8f-e7-94-9f-e6-b4-bb/" class="archive-article-date">
-  	<time datetime="2007-01-11T07:46:10.000Z" itemprop="datePublished"><i class="icon-clock"></i>2007-01-11</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2007/01/11/e6-9c-89-e5-9c-9f-e9-b8-a1-e8-9b-8b-e5-90-83-e7-9a-84-e5-b9-b8-e7-a6-8f-e7-94-9f-e6-b4-bb/">有土鸡蛋吃的幸福生活</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-	<i class="icon-price-tags"></i>
-	<a class="article-category-link" href="/categories/我的快乐童年/">我的快乐童年</a>
-	</div>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2007/01/11/e5-92-8c-e7-88-b8-e7-88-b8-e5-a6-88-e5-a6-88-e5-9c-a8-e4-b8-80-e8-b5-b7-e7-9a-84-e4-b8-8a-e6-b5-b7-e7-94-9f-e6-b4-bb/" class="archive-article-date">
-  	<time datetime="2007-01-11T04:14:00.000Z" itemprop="datePublished"><i class="icon-clock"></i>2007-01-11</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2007/01/11/e5-92-8c-e7-88-b8-e7-88-b8-e5-a6-88-e5-a6-88-e5-9c-a8-e4-b8-80-e8-b5-b7-e7-9a-84-e4-b8-8a-e6-b5-b7-e7-94-9f-e6-b4-bb/">和爸爸妈妈在一起的上海生活</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-	<i class="icon-price-tags"></i>
-	<a class="article-category-link" href="/categories/我的快乐童年/">我的快乐童年</a>
-	</div>
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="Hexo-backup-restore" data-title="Hexo 源码备份与恢复" data-url="http://candreams.com/2016/10/29/Hexo-backup-restore/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"candreams"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-      
-        </div></section>
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2006" class="archive-year">2006</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2006/12/02/e7-ac-ac-e4-b8-80-e6-ac-a1-e8-bf-9c-e8-a1-8c-e6-89-93-e9-a3-9e-e7-9a-84-e5-92-8c-e7-88-b8-e7-88-b8-e7-ba-a6-e4-bc-9a/" class="archive-article-date">
-  	<time datetime="2006-12-02T14:35:08.000Z" itemprop="datePublished"><i class="icon-clock"></i>2006-12-02</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2006/12/02/e7-ac-ac-e4-b8-80-e6-ac-a1-e8-bf-9c-e8-a1-8c-e6-89-93-e9-a3-9e-e7-9a-84-e5-92-8c-e7-88-b8-e7-88-b8-e7-ba-a6-e4-bc-9a/">第一次远行---打飞的和爸爸约会</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-	<i class="icon-price-tags"></i>
-	<a class="article-category-link" href="/categories/大事记/">大事记</a>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2006/05/29/e6-88-91-e7-9a-84-e5-87-ba-e7-94-9f/" class="archive-article-date">
-  	<time datetime="2006-05-29T01:15:33.000Z" itemprop="datePublished"><i class="icon-clock"></i>2006-05-29</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2006/05/29/e6-88-91-e7-9a-84-e5-87-ba-e7-94-9f/">我的出生</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-	<i class="icon-price-tags"></i>
-	<a class="article-category-link" href="/categories/大事记/">大事记</a>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/page/22/">&laquo; Prev</a><a class="page-number" href="/archives/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/21/">21</a><a class="page-number" href="/archives/page/22/">22</a><span class="page-number current">23</span>
-    </nav>
-  
 
 
       </div>
@@ -415,8 +315,8 @@
 		mathjax: false,
 		animate: true,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
