@@ -1,38 +1,19 @@
 ---
-title: Hello World
+title: 你们好，GitHub和Hexo！
 ---
-Welcome to [Hexo](https://hexo.io/)! This is your very first post. Check [documentation](https://hexo.io/docs/) for more info. If you get any problems when using Hexo, you can find the answer in [troubleshooting](https://hexo.io/docs/troubleshooting.html) or you can ask me on [GitHub](https://github.com/hexojs/hexo/issues).
+VPS越来越不靠谱 - 便宜的没好货，好货不便宜。
+终于折腾好了GitHub+Hexo(此处省略10000字），域名指向了这里。
 
-## Quick Start
+## 快速启动
 
-### Create a new post
+### 还有很多事情要做：
+1. 把Wordpress的文章迁移到这里来；
+2. 主题要改成以前Wordpress那样的；
+3. 找到一个便捷的记录日常点滴的方法；
+4. ......
 
-``` bash
-$ hexo new "My New Post"
-```
+### 细节
+1. 如何快速把图片插入到文章中？
+2. 图片是否要用图床？
+3. 成长计时展示板怎么解决？
 
-More info: [Writing](https://hexo.io/docs/writing.html)
-
-### Run server
-
-``` bash
-$ hexo server
-```
-
-More info: [Server](https://hexo.io/docs/server.html)
-
-### Generate static files
-
-``` bash
-$ hexo generate
-```
-
-More info: [Generating](https://hexo.io/docs/generating.html)
-
-### Deploy to remote sites
-
-``` bash
-$ hexo deploy
-```
-
-More info: [Deployment](https://hexo.io/docs/deployment.html)
