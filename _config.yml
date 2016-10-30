@@ -66,7 +66,7 @@ disqus_shortname: #disqus的用户名称
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: yelee
+theme: yilia
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
